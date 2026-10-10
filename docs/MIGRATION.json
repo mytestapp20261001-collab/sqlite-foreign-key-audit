@@ -1,0 +1,141 @@
+{
+  "schema_version": 1,
+  "slug": "sqlite-foreign-key-audit",
+  "domain": "quality",
+  "guidance_group": "strong",
+  "source_commit": "1286096c10a23bbb04aca83679ae3c31f3326030",
+  "source_repository": "mytestapp20261001-collab/mytest-engineering-toolbox",
+  "source_repository_id": 1411411288,
+  "source_path": "tools/sqlite-foreign-key-audit",
+  "root_path": ".",
+  "publication_status": "prepared_only; coordinator verifies final repository identity and remote CI",
+  "expected_repository": "mytestapp20261001-collab/sqlite-foreign-key-audit",
+  "repository_id": null,
+  "preserved_files": [
+    {
+      "path": "OPTIONAL_MYTEST.md",
+      "size_bytes": 1475,
+      "sha256": "1abd2c34f485ecf360b7085ea52aad57ea02249f43e6465d075a8cfb5c77cf70",
+      "git_blob_sha1": "3c19ce9b618e26b8836591b37c4430589db71299",
+      "utf8": true,
+      "source_path": "tools/sqlite-foreign-key-audit/OPTIONAL_MYTEST.md"
+    },
+    {
+      "path": "README.md",
+      "size_bytes": 5340,
+      "sha256": "ebce21089e8633d44c26d556ca7b7a48f4efa9e38782e4b022a9a62df273c2df",
+      "git_blob_sha1": "fdc37864673bd0c48dc76c49abecd3ed2acd5064",
+      "utf8": true,
+      "source_path": "tools/sqlite-foreign-key-audit/README.md"
+    },
+    {
+      "path": "SKILL.md",
+      "size_bytes": 2300,
+      "sha256": "5b50cd1c29fb2f539692c65b4e15d31fc9b4b227f830fae6a168a65dcfcb1ae1",
+      "git_blob_sha1": "017722e5a1f05b17a1e6c974d829f8125a00d986",
+      "utf8": true,
+      "source_path": "tools/sqlite-foreign-key-audit/SKILL.md"
+    },
+    {
+      "path": "examples/create_examples.py",
+      "size_bytes": 1079,
+      "sha256": "c9d6ce80bbee2ac97ea32136914fab8f724a083200003de172c742ea4b4a52b9",
+      "git_blob_sha1": "04ebfcfbf82e9d1cf4b015cbf4c0809f7a1a5994",
+      "utf8": true,
+      "source_path": "tools/sqlite-foreign-key-audit/examples/create_examples.py"
+    },
+    {
+      "path": "test_tool.py",
+      "size_bytes": 7753,
+      "sha256": "761f3e76366084795e8a53287f207c12056c161357bb8d0f8e8619de0a98a4d9",
+      "git_blob_sha1": "369da83f1568bd23410cc2c05eb18a1db8cc23cb",
+      "utf8": true,
+      "source_path": "tools/sqlite-foreign-key-audit/test_tool.py"
+    },
+    {
+      "path": "tool.py",
+      "size_bytes": 7324,
+      "sha256": "542adf16ff25a90ab8fd2983c93ba82686ae201c7867371675f6bb73d57c163b",
+      "git_blob_sha1": "dc87f3966eb60d77642049930564d85d7dab7a85",
+      "utf8": true,
+      "source_path": "tools/sqlite-foreign-key-audit/tool.py"
+    },
+    {
+      "path": "LICENSE",
+      "size_bytes": 1076,
+      "sha256": "dce76471613629e93f3f98b7aaa6f72ff9adb88204a3f83d3045952017ab2f46",
+      "git_blob_sha1": "677c4463d59b560db9c1fde1052eff6eefa6441a",
+      "utf8": true,
+      "source_path": "LICENSE"
+    },
+    {
+      "path": ".gitignore",
+      "size_bytes": 62,
+      "sha256": "e4d5aecc4cd36f593c2e7f3dad08b24261b13466b898004a445614058d29d8de",
+      "git_blob_sha1": "fe9f8fb619601213cbfef4f6eadb5d413d8f7f01",
+      "utf8": true,
+      "source_path": ".gitignore"
+    }
+  ],
+  "readme_checks": [
+    {
+      "label": "README example",
+      "args": [
+        "-I",
+        "examples/create_examples.py",
+        "{work}/databases"
+      ],
+      "expected_exit": 0,
+      "output": "empty",
+      "documented_command": "python3.12 -I examples/create_examples.py \"$WORK/databases\""
+    },
+    {
+      "label": "README example",
+      "args": [
+        "-I",
+        "tool.py",
+        "{work}/databases/pass.sqlite"
+      ],
+      "expected_exit": 0,
+      "output": "json",
+      "documented_command": "python3.12 -I tool.py \"$WORK/databases/pass.sqlite\""
+    },
+    {
+      "label": "README example",
+      "args": [
+        "-I",
+        "tool.py",
+        "{work}/databases/fail.sqlite"
+      ],
+      "expected_exit": 1,
+      "output": "json",
+      "documented_command": "python3.12 -I tool.py \"$WORK/databases/fail.sqlite\"; test \"$?\" -eq 1"
+    },
+    {
+      "label": "CLI help",
+      "args": [
+        "tool.py",
+        "--help"
+      ],
+      "expected_exit": 0,
+      "output": "help"
+    },
+    {
+      "label": "CLI missing input",
+      "args": [
+        "tool.py"
+      ],
+      "expected_exit": 2,
+      "output": "json"
+    },
+    {
+      "label": "CLI unknown argument",
+      "args": [
+        "tool.py",
+        "--unsupported-migration-test"
+      ],
+      "expected_exit": 2,
+      "output": "json"
+    }
+  ]
+}
